@@ -1,5 +1,3 @@
 #!/bin/bash
 
-file_name="howl_$(date +'%Y-%m-%d').wav"
-
-arecord -D plughw:2,0 --duration=28800 "$file_name"
+timeout 28800 /usr/bin/arecord -D plughw:2,0 -f cd -t wav --max-file-time 3600 --use-strftime "/home/jo/Desktop/howl/audio/%Y/%m/%d/listen-%H-%M-%v.wav"
