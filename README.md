@@ -22,12 +22,12 @@ sudo usermod -aG docker $USER
 ```
 
 ### Using arecord to record via my external Microphone
-When I started this project I thought that I would need python and the PyAudio library to record sound through my external microphone. While this might work it was total overkill once I discovered [arecord](https://linux.die.net/man/1/arecord). Arecord is a command-line sound recorder and player for ALSA soundcard driver and can be used super easy with a cronjob and a shell script:
+When I started this project I thought that I would need python and the PyAudio library to record sound through my external microphone. While this might work, it was total overkill once I discovered [arecord](https://linux.die.net/man/1/arecord). Arecord is a command-line sound recorder and player for ALSA soundcard driver and can be used super easy with a cronjob and a shell script:
 
 ```shell
 #!/bin/bash
 
-timeout 28800 /usr/bin/arecord -D plughw:2,0 -f cd -t wav --max-file-time 3600 --use-strftime "/home/jo/Desktop/howl/audio/%Y/%m/%d/listen-%H-%M-%v.wav"
+timeout 28800 /usr/bin/arecord -D plughw:2,0 -f cd -t wav --max-file-time 3600 --use-strftime "/home/jo/Desktop/howl/audio/export/%Y/%m/%d/listen-%H-%M-%v.wav"
 
 ```
 
